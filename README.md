@@ -27,6 +27,41 @@ uv pip install .
 
 ---
 
+## Minimal Usage
+
+`t_skm_project` maps a batch of initial points `x0` to the mixed linear
+constraint set
+
+```text
+A x <= b,   C x = d.
+```
+
+```python
+import torch
+from tskm_net import t_skm_project
+
+A = torch.cat([torch.eye(3), -torch.eye(3)], dim=0)  # A x <= b
+b = torch.tensor([1., 1., 1., 0., 0., 0.])
+C = torch.ones(1, 3)                                # C x = d
+d = torch.ones(4, 1)
+x0 = torch.randn(4, 3)
+
+x = t_skm_project(
+    A, b, C, d, x0,
+    beta=6,
+    delta=1.0,
+    variant="heavy_ball_skm",
+    variant_args={"momentum": 0.25},
+)
+```
+
+Supported variants are `"skm"`, `"heavy_ball_skm"`, `"nesterov_skm"`, and
+`"gskm"`. Shapes are strict: `A` is `(p, n)`, `b` is `(p,)`, `C` is `(q, n)`,
+`d` is `(B, q)`, and `x0` is `(B, n)`. `A`, `b`, and `C` are shared across
+the batch; `d` and `x0` are batched.
+
+---
+
 ## Citation
 
 If you find this work useful, please cite:
