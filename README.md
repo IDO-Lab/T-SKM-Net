@@ -9,8 +9,7 @@ This is the official repository for **T-SKM-Net**, a trainable neural network fr
 - Paper (arXiv, with appendix): https://arxiv.org/abs/2512.10461  
 - PDF in this repository (with appendix): `paper.pdf`
 
-**Status:** Published in **AAAI 2026**.  
-**Code availability:** We will release the code once it is ready.
+**Status:** Published in **AAAI 2026**.
 
 ---
 
