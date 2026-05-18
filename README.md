@@ -14,6 +14,19 @@ This is the official repository for **T-SKM-Net**, a trainable neural network fr
 
 ---
 
+## Installation
+
+This package does not pin a PyTorch wheel in `pyproject.toml`, because the
+appropriate CPU/CUDA build depends on your machine. Install PyTorch first, then
+install this package:
+
+```bash
+uv pip install --torch-backend=auto torch
+uv pip install .
+```
+
+---
+
 ## Citation
 
 If you find this work useful, please cite:
